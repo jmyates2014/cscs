@@ -1,6 +1,13 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
 const app = express();
+
+// Connect to mongoDB
+connectDB();
+
+// Initialize middleware
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => res.json({ msg: 'You have reached the CSCS Api.' }));
 
