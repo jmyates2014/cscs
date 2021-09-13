@@ -60,17 +60,63 @@ router.post(
 );
 
 // @ route     PUT api/snippets/:id
-// @ desc      Get all users snippets
+// @ desc      Update Snippet
 // @ access    Private
-router.put('/:id', (req, res) => {
-  res.send('Update snippet');
+router.put('/:id', auth, async (req, res) => {
+  const { name, platform, content } = req.body;
+
+  // create snippet object
+  const snippetFields = {};
+  if (name) snippetFields.name = name;
+  if (platform) snippetFields.platform = platform;
+  if (content) snippetFields.content = content;
+
+  try {
+    let snippet = await Snippet.findById(req.params.id);
+
+    if (!snippet) return res.status(404).json({ msg: 'Snippet Not Found' });
+
+    // check if user owns snippet
+    if (snippet.user.toString() !== req.user.id) {
+      return res
+        .status(401)
+        .json({ msg: 'Noth Authorized to update snippet BLAH' });
+    }
+
+    snippet = await Snippet.findByIdAndUpdate(
+      req.params.id,
+      { $set: snippetFields },
+      { new: true }
+    );
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 // @ route     POST api/snippets/:id
-// @ desc      Get all users snippets
+// @ desc      Delete Snippet
 // @ access    Private
-router.delete('/:id', (req, res) => {
-  res.send('Delete snippet');
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    let snippet = await Snippet.findById(req.params.id);
+
+    if (!snippet) return res.status(404).json({ msg: 'Contact Not Found' });
+
+    // check if user owns snippet
+    if (snippet.user.toString() !== req.user.id) {
+      return res
+        .status(401)
+        .json({ msg: 'Noth Authorized to update snippet BLAH' });
+    }
+
+    await Snippet.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Snippet Deleted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
 });
 
 module.exports = router;
