@@ -12,7 +12,7 @@ export const Navbar = () => {
               Code Snippet
               <span className='text-secondary link-secondary'>
                 {' '}
-                sCheat Sheet
+                Cheat Sheet
               </span>
             </span>
           </Link>

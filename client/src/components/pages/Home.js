@@ -1,9 +1,10 @@
 import React from 'react';
+import Snippets from '../../components/snippets/snippets';
 
 const home = () => {
   return (
     <div className='container'>
-      <h1>Home Page</h1>
+      <Snippets />
     </div>
   );
 };
