@@ -4,9 +4,9 @@ const Snippetitem = ({ snippet }) => {
   const { name, description, content, icon } = snippet;
 
   return (
-    <div className='card my-5'>
+    <div className='container mx-auto'>
       <div className='card-header fs-5'>
-        <div className='d-flex flex-row justify-content-start align-items-center'>
+        <div className=''>
           <div className='pe-4 fs-1'>
             <i className={icon}></i>
           </div>

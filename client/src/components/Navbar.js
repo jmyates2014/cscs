@@ -3,28 +3,25 @@ import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
-    <header className='bg-dark navbar-expand-sm navbar navbar-dark shadow p-3'>
-      <div className='container'>
-        <div className='navbar-brand'>
-          <Link to='/' className='nav-link'>
-            <i className='fas fa-code me-2'></i>
-            <span className='text-white'>
+    <header className='bg-gray-900'>
+      <div className='container mx-auto grid grid-cols-2 gap-4 items-center py-3'>
+        <div className='text-2xl py-2 col'>
+          <Link to='/' className=''>
+            <i className='fas fa-code me-2 text-white pr-2'></i>
+            <span className='text-gray-200'>
               Code Snippet
-              <span className='text-secondary link-secondary'>
-                {' '}
-                Cheat Sheet
-              </span>
+              <span className='text-gray-400'> Cheat Sheet</span>
             </span>
           </Link>
         </div>
-        <ul className='navbar-nav'>
-          <li className='nav-item'>
-            <Link to='/' className='nav-link'>
+        <ul className='flex justify-end'>
+          <li className='inline-block'>
+            <Link to='/' className='text-gray-200 mx-3'>
               Home
             </Link>
           </li>
-          <li className='nav-item'>
-            <Link to='About' className='nav-link'>
+          <li className='inline-block'>
+            <Link to='About' className='text-gray-200 inline-block'>
               About
             </Link>
           </li>
