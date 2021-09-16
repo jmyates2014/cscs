@@ -21,8 +21,18 @@ export const Navbar = () => {
             </Link>
           </li>
           <li className='inline-block'>
-            <Link to='About' className='text-gray-200 inline-block'>
+            <Link to='/about' className='text-gray-200 inline-block mx-3'>
               About
+            </Link>
+          </li>
+          <li className='inline-block'>
+            <Link to='/register' className='text-gray-200 inline-block mx-3'>
+              Register
+            </Link>
+          </li>
+          <li className='inline-block'>
+            <Link to='/login' className='text-gray-200 inline-block mx-3'>
+              Login
             </Link>
           </li>
         </ul>

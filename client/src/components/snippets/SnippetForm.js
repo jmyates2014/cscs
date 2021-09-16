@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import SnippetContext from '../../context/Snippet/snippetContext';
-import { CLEAR_CURRENT } from '../../context/types';
 
 const SnippetForm = () => {
   const snippetContext = useContext(SnippetContext);
@@ -111,7 +110,12 @@ const SnippetForm = () => {
         </div>
         {current && (
           <div>
-            <button onClick={clearAll}>Clear</button>
+            <button
+              className='w-full border-2 rounded-md p-2 mt-2 bg-gray-900 text-white'
+              onClick={clearAll}
+            >
+              Clear
+            </button>
           </div>
         )}
       </form>

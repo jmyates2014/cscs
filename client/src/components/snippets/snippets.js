@@ -1,4 +1,5 @@
 import React, { Fragment, useContext } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import SnippetContext from '../../context/Snippet/snippetContext';
 import Snippetitem from './snippetitem';
 
@@ -13,13 +14,19 @@ const Snippets = () => {
 
   return (
     <Fragment>
-      {filtered !== null
-        ? filtered.map((snippet) => (
-            <Snippetitem key={snippet.id} snippet={snippet} />
-          ))
-        : snippets.map((snippet) => (
-            <Snippetitem key={snippet.id} snippet={snippet} />
-          ))}
+      <TransitionGroup>
+        {filtered !== null
+          ? filtered.map((snippet) => (
+              <CSSTransition key={snippet.id} timeout={300} classNames='item'>
+                <Snippetitem snippet={snippet} />
+              </CSSTransition>
+            ))
+          : snippets.map((snippet) => (
+              <CSSTransition key={snippet.id} timeout={300} classNames='item'>
+                <Snippetitem snippet={snippet} />
+              </CSSTransition>
+            ))}
+      </TransitionGroup>
     </Fragment>
   );
 };

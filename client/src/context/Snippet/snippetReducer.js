@@ -8,7 +8,7 @@ import {
   CLEAR_FILTER,
 } from '../types';
 
-export default (state, action) => {
+const snippetReducer = (state, action) => {
   switch (action.type) {
     case ADD_SNIPPET:
       return {
@@ -57,3 +57,5 @@ export default (state, action) => {
       return state;
   }
 };
+
+export default snippetReducer;

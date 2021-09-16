@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SnippetContext from '../../context/Snippet/snippetContext';
 import { useContext } from 'react';
 import { set } from 'mongoose';

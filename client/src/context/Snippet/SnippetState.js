@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
-import { v4 as uuid } from 'uuid';
 import snippetContext from './snippetContext';
 import snippetReducer from './snippetReducer';
+import { v4 as uuidv4 } from 'uuid';
 import {
   ADD_SNIPPET,
   DELETE_SNIPPET,
@@ -48,7 +48,7 @@ const SnippetState = (props) => {
 
   //Add Snippet
   const addSnippet = (snippet) => {
-    snippet.id = 1000000000000000000000000000000000000000;
+    snippet.id = uuidv4;
     dispatch({ type: ADD_SNIPPET, payload: snippet });
   };
 
