@@ -5,13 +5,21 @@ import Snippetitem from './snippetitem';
 const Snippets = () => {
   const snippetContext = useContext(SnippetContext);
 
-  const { snippets } = snippetContext;
+  const { snippets, filtered } = snippetContext;
+
+  if (snippets.lenght === 0) {
+    <h4>Please Add A Snippet</h4>;
+  }
 
   return (
     <Fragment>
-      {snippets.map((snippet) => (
-        <Snippetitem key={snippet.id} snippet={snippet} />
-      ))}
+      {filtered !== null
+        ? filtered.map((snippet) => (
+            <Snippetitem key={snippet.id} snippet={snippet} />
+          ))
+        : snippets.map((snippet) => (
+            <Snippetitem key={snippet.id} snippet={snippet} />
+          ))}
     </Fragment>
   );
 };

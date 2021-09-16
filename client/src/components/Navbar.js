@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const Navbar = () => {
   return (
     <header className='bg-gray-900'>
-      <div className='container mx-auto grid grid-cols-2 gap-4 items-center py-3'>
+      <div className='container mx-auto max-w-screen-l grid grid-cols-2 items-center'>
         <div className='text-2xl py-2 col'>
           <Link to='/' className=''>
             <i className='fas fa-code me-2 text-white pr-2'></i>

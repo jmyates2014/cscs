@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 import snippetContext from './snippetContext';
 import snippetReducer from './snippetReducer';
 import {
@@ -40,28 +40,61 @@ const SnippetState = (props) => {
         icon: 'fab fa-js-square text-warning',
       },
     ],
+    current: null,
+    filtered: null,
   };
 
   const [state, dispatch] = useReducer(snippetReducer, initialState);
 
   //Add Snippet
+  const addSnippet = (snippet) => {
+    snippet.id = 1000000000000000000000000000000000000000;
+    dispatch({ type: ADD_SNIPPET, payload: snippet });
+  };
 
   //Delete Snippet
+  const deleteSnippet = (id) => {
+    dispatch({ type: DELETE_SNIPPET, payload: id });
+  };
 
   //Set Current Snippet
+  const setCurrent = (snippet) => {
+    dispatch({ type: SET_CURRENT, payload: snippet });
+  };
 
   //Clear Current Snipet
+  const clearCurrent = (snippet) => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
 
   //Update Snippet
+  const updateSnippet = (snippet) => {
+    dispatch({ type: UPDATE_SNIPPET, payload: snippet });
+  };
 
   //Filter Snippet
+  const filterSnippet = (text) => {
+    dispatch({ type: FILTER_SNIPPET, payload: text });
+  };
 
   //Clear Snippet
+  const clearFilter = () => {
+    dispatch({ type: CLEAR_FILTER });
+  };
 
   return (
     <snippetContext.Provider
       value={{
         snippets: state.snippets,
+        current: state.current,
+        filtered: state.filtered,
+        addSnippet,
+        deleteSnippet,
+        setCurrent,
+        clearCurrent,
+        updateSnippet,
+        filterSnippet,
+        clearFilter,
       }}
     >
       {props.children}
